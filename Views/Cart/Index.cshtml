@@ -1,0 +1,6 @@
+@model BakeryShop.ViewModels.CartViewModel
+@{ ViewData["Title"] = "Giỏ hàng"; }
+<h1>Giỏ hàng của bạn</h1>
+@if(Model.Items.Count == 0){<p class="paper-card">Giỏ hàng đang trống. <a asp-controller="Products" asp-action="Index">Mua sắm ngay</a></p>}
+else{<form id="cart-token">@Html.AntiForgeryToken()</form><div class="table-responsive"><table class="table align-middle"><thead><tr><th>Sản phẩm</th><th>Đơn giá</th><th>Số lượng</th><th>Tạm tính</th><th></th></tr></thead><tbody>@foreach(var item in Model.Items){<tr><td><img class="cart-thumb" src="@(item.Image ?? "/images/cake-placeholder.svg")" /> @item.Name</td><td>@item.Price.ToString("N0")đ</td><td><input class="form-control cart-quantity" style="width:90px" type="number" min="0" max="@item.Stock" value="@item.Quantity" data-id="@item.ProductId" /></td><td>@item.Subtotal.ToString("N0")đ</td><td><button class="btn btn-outline-danger btn-sm remove-cart" data-id="@item.ProductId">Xóa</button></td></tr>}</tbody></table></div><div class="text-end"><h3>Tổng: @Model.Total.ToString("N0")đ</h3><a class="btn btn-brown btn-lg" asp-controller="Checkout" asp-action="Index">Thanh toán</a></div><div id="cart-message" class="mt-2"></div>}
+

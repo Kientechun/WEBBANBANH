@@ -1,0 +1,3 @@
+@model IReadOnlyList<BakeryShop.Models.Entities.News>
+@{ ViewData["Title"] = "Tin tức"; }
+<h1>Tin tức & câu chuyện</h1><div class="row g-4">@foreach(var item in Model){<div class="col-md-4"><article class="paper-card h-100"><h3><a asp-action="Detail" asp-route-slug="@item.Slug">@item.Title</a></h3><p>@item.Summary</p><a asp-action="Detail" asp-route-slug="@item.Slug">Đọc tiếp</a></article></div>}</div>

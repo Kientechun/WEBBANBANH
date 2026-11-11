@@ -1,0 +1,3 @@
+@model BakeryShop.Models.Entities.Order
+@{ ViewData["Title"] = "Đặt hàng thành công"; }
+<div class="paper-card text-center"><div class="display-4">🎂</div><h1>Cảm ơn bạn đã đặt hàng!</h1><p>Mã đơn hàng: <strong>@Model.OrderNumber</strong></p><p>Tổng tiền: <strong>@Model.TotalAmount.ToString("N0")đ</strong></p><p>Chúng tôi sẽ sớm liên hệ xác nhận đơn hàng.</p><a class="btn btn-brown" asp-controller="Products" asp-action="Index">Tiếp tục mua sắm</a></div>

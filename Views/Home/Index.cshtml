@@ -1,0 +1,9 @@
+@model BakeryShop.ViewModels.HomeViewModel
+@{ ViewData["Title"] = "Bánh tươi mỗi ngày"; }
+<section class="hero rounded-4 p-5 mb-5"><div class="col-lg-7"><span class="badge text-bg-light mb-3">Làm mới mỗi ngày</span><h1 class="display-4 fw-bold">Ngọt ngào từ lò bánh nhà</h1><p class="lead">Bánh thủ công thơm ngon, nguyên liệu tươi và giao tận nơi.</p><a class="btn btn-brown btn-lg" asp-controller="Products" asp-action="Index">Khám phá bánh</a></div></section>
+<div class="d-flex justify-content-between align-items-center mb-3"><h2>Danh mục bánh</h2></div>
+<div class="row g-3 mb-5">@foreach(var c in Model.Categories){<div class="col-6 col-md-3"><a class="category-tile" asp-controller="Products" asp-action="Index" asp-route-categoryId="@c.Id">@c.Name</a></div>}</div>
+<h2 class="section-title">Bánh nổi bật</h2><div class="row g-4 mb-5">@foreach(var product in Model.Featured){<partial name="_ProductCard" model="product" />}</div>
+<h2 class="section-title">Bánh mới ra lò</h2><div class="row g-4 mb-5">@foreach(var product in Model.NewProducts){<partial name="_ProductCard" model="product" />}</div>
+<h2 class="section-title">Được yêu thích</h2><div class="row g-4 mb-5">@foreach(var product in Model.Bestsellers){<partial name="_ProductCard" model="product" />}</div>
+<h2 class="section-title">Chuyện nhà Bakery</h2><div class="row g-4">@foreach(var item in Model.LatestNews){<div class="col-md-4"><div class="card h-100"><div class="card-body"><h5>@item.Title</h5><p>@item.Summary</p><a asp-controller="News" asp-action="Detail" asp-route-slug="@item.Slug">Đọc tiếp →</a></div></div></div>}</div>

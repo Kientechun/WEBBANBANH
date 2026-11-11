@@ -1,0 +1,3 @@
+@model BakeryShop.ViewModels.LoginViewModel
+@{ ViewData["Title"] = "Đăng nhập"; }
+<h1>Đăng nhập</h1><form asp-action="Login" method="post" class="paper-card col-md-6">@Html.AntiForgeryToken()<div asp-validation-summary="ModelOnly" class="text-danger"></div><input asp-for="ReturnUrl" type="hidden" /><div class="mb-3"><label asp-for="Email" class="form-label">Email</label><input asp-for="Email" class="form-control" /></div><div class="mb-3"><label asp-for="Password" class="form-label">Mật khẩu</label><input asp-for="Password" class="form-control" /></div><button class="btn btn-brown">Đăng nhập</button> <a asp-action="Register">Tạo tài khoản</a> · <a asp-action="ForgotPassword">Quên mật khẩu?</a></form>

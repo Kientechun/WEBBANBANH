@@ -1,0 +1,8 @@
+@model BakeryShop.ViewModels.CheckoutViewModel
+@{ ViewData["Title"] = "Thanh toán"; }
+<h1>Thông tin nhận hàng</h1><form asp-action="Index" method="post" class="paper-card col-lg-8">@Html.AntiForgeryToken()<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="mb-3"><label asp-for="CustomerName" class="form-label">Họ tên</label><input asp-for="CustomerName" class="form-control" /><span asp-validation-for="CustomerName" class="text-danger"></span></div>
+<div class="mb-3"><label asp-for="CustomerEmail" class="form-label">Email</label><input asp-for="CustomerEmail" class="form-control" /><span asp-validation-for="CustomerEmail" class="text-danger"></span></div>
+<div class="mb-3"><label asp-for="CustomerPhone" class="form-label">Số điện thoại</label><input asp-for="CustomerPhone" class="form-control" /><span asp-validation-for="CustomerPhone" class="text-danger"></span></div>
+<div class="mb-3"><label asp-for="CustomerAddress" class="form-label">Địa chỉ giao hàng</label><textarea asp-for="CustomerAddress" class="form-control"></textarea><span asp-validation-for="CustomerAddress" class="text-danger"></span></div>
+<div class="mb-3"><label asp-for="PaymentMethod" class="form-label">Thanh toán</label><select asp-for="PaymentMethod" class="form-select"><option value="cod">Thanh toán khi nhận hàng (COD)</option><option value="vnpay">VNPAY</option></select></div><div class="mb-3"><label asp-for="Notes" class="form-label">Ghi chú</label><textarea asp-for="Notes" class="form-control"></textarea></div><h4>Tổng thanh toán: @Model.Total.ToString("N0")đ</h4><button class="btn btn-brown btn-lg">Đặt hàng</button></form>

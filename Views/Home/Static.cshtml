@@ -1,0 +1,3 @@
+@model (string Title, string Body)
+@{ ViewData["Title"] = Model.Title; }
+<h1>@Model.Title</h1><div class="paper-card mt-3"><p class="lead">@Model.Body</p></div>

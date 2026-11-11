@@ -1,0 +1,3 @@
+@model IReadOnlyList<BakeryShop.Models.Entities.Contact>
+@{ ViewData["Title"] = "Liên hệ"; Layout = "/Views/Shared/_Layout.cshtml"; }
+<h1>Liên hệ khách hàng</h1><table class="table"><thead><tr><th>Ngày</th><th>Tên</th><th>Email</th><th>Chủ đề</th><th>Trạng thái</th><th></th></tr></thead><tbody>@foreach(var c in Model){<tr><td>@c.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy")</td><td>@c.Name</td><td>@c.Email</td><td>@c.Subject</td><td>@c.Status</td><td><a asp-action="Detail" asp-route-id="@c.Id">Xem</a></td></tr>}</tbody></table>

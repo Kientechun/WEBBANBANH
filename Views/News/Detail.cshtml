@@ -1,0 +1,3 @@
+@model BakeryShop.Models.Entities.News
+@{ ViewData["Title"] = Model.Title; }
+<article class="paper-card"><small>@Model.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy") · @Model.Author</small><h1>@Model.Title</h1><p class="lead">@Model.Summary</p><div class="news-content">@Model.Content</div></article>

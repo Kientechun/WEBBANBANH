@@ -1,0 +1,6 @@
+@model BakeryShop.Models.Entities.Product
+@{ ViewData["Title"] = Model.Name; }
+<div class="row g-5"><div class="col-md-6"><img class="img-fluid rounded-4 product-detail-image" src="@(Model.Image ?? "/images/cake-placeholder.svg")" alt="@Model.Name" /></div><div class="col-md-6"><div class="text-muted">@Model.Category.Name</div><h1>@Model.Name</h1><h3 class="price">@((Model.SalePrice ?? Model.Price).ToString("N0"))đ @if(Model.SalePrice.HasValue){<del class="text-muted fs-5">@Model.Price.ToString("N0")đ</del>}</h3><p>@Model.Description</p><p><strong>Thành phần:</strong> @Model.Ingredients</p><p><strong>Tồn kho:</strong> @(Model.Stock > 0 ? Model.Stock + " sản phẩm" : "Tạm hết hàng")</p>
+<form asp-controller="Cart" asp-action="Add" method="post" class="add-cart-form">@Html.AntiForgeryToken()<input type="hidden" name="productId" value="@Model.Id" /><input type="hidden" name="quantity" value="1" /><button class="btn btn-brown" disabled="@(Model.Stock <= 0)">Thêm vào giỏ</button><span class="ms-2 cart-message"></span></form></div></div>
+<h2 class="mt-5">Có thể bạn cũng thích</h2><div class="row g-4">@foreach(BakeryShop.Models.Entities.Product p in ViewBag.Related){<partial name="_ProductCard" model="p" />}</div>
+
